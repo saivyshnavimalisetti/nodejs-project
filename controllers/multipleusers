@@ -1,0 +1,27 @@
+module.exports = {
+multipleusers:function(req,res) {
+    console.log("you entered in to a validation menu");
+    
+      const users = req.body.users;
+      let validusers = 0;
+      for(let i=0;i<users.length;i++ ) {
+        var user = users[i].username;
+        var password = validatePassword(users[i].password);
+        var user_type =validateuser_type(users[i].user_type);
+       
+         console.log('username',user);
+         console.log('password',password);
+         console.log('user_type',user_type);
+        if (password && user_type) {
+            validusers++;
+        }
+    }
+    const data = {"admincount":validusers}
+    res.send(data);
+    }};
+    function validatePassword(password){
+        return password.length ;
+    }
+    function validateuser_type(user_type) {
+        return user_type == 'admin';
+    }

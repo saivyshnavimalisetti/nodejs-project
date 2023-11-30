@@ -1,0 +1,22 @@
+module.exports = {
+validation:function(req,res) {
+    console.log("you enterd in to a validation menu");
+    
+      const{username,password,user_type} = req.body;
+      const ispasswordvalid = validatepassword(password);
+      if(ispasswordvalid) {
+      if(user_type == 'admin') {
+        res.send('${username} has sufficient acsess');
+      } else {
+        res.send('${username}doesnt have sufficient acses');
+      }
+      
+    } else {
+      res.send('password validation failed');
+    }
+}
+};
+function validatepassword(password) {
+    
+    return password.length >= 8 && /[A-Z]/.test(password) && /\d/.test(password);
+}

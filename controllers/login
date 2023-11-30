@@ -1,0 +1,15 @@
+module.exports = {
+login:function(req,res){
+    console.log("you entered in to a logn function");
+    
+    password = req.body.password;
+
+    if(password =="Vyshu@345") {
+      res.status(200).json({'status':'sucess'})
+    }else {
+     res.status(400).json({'status':'failed'})
+    }
+},
+
+
+}
